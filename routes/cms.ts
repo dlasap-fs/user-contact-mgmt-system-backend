@@ -7,3 +7,7 @@ route.get("/records", async (req: express.Request, res: express.Response) => {
   const result = await getAllCMS(DB, DB_COLLECTION);
   return res.send(result);
 });
+
+route.post("/record");
+
+module.exports = route;
