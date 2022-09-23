@@ -10,6 +10,7 @@ const client = new MongoClient(uri, {
 export const operations = {
   addRecord: async (database: string, dataset: string, data: Record<string, any>): Promise<any | undefined> => {
     try {
+      await client.connect();
       return (
         (await client.db(database).collection(dataset).insertOne(data)) || {
           acknowledged: false,
@@ -24,6 +25,7 @@ export const operations = {
   },
   getRecords: async (database: string, dataset: string, options?: any) => {
     try {
+      await client.connect();
       const records = await client.db(database).collection(dataset).find().toArray();
       return records.length ? records : [];
     } catch (error) {
