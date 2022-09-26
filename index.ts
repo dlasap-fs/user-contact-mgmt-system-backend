@@ -17,6 +17,6 @@ app.get("*", (_, response: Response) => {
 });
 
 const server = http.createServer(app);
-server.listen(parseInt(PORT), () => {
+server.listen(process.env.PORT || parseInt(PORT), () => {
   console.log("Server listening to port :", PORT);
 });
