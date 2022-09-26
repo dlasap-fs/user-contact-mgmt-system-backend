@@ -1,10 +1,10 @@
 import express, { Router } from "express";
 const { getAllCMS, addCMS } = require("../controller/cms");
-const { DB = "cms_db", DB_COLLECTION = "records" } = process.env;
+const { MONGODB_DB = "cms_db", MONGODB_COLLECTION = "records" } = process.env;
 const route = Router();
 
 route.get("/records", async (req: express.Request, res: express.Response) => {
-  const result = await getAllCMS(DB, DB_COLLECTION);
+  const result = await getAllCMS(MONGODB_DB, MONGODB_COLLECTION);
   return res.send(result);
 });
 
@@ -18,7 +18,7 @@ route.post("/record", async (req: express.Request, res: express.Response) => {
     created_date: new Date(),
     updated_date: new Date(),
   };
-  const result = await addCMS(DB, DB_COLLECTION, params);
+  const result = await addCMS(MONGODB_DB, MONGODB_COLLECTION, params);
 
   return res.send(result);
 });
