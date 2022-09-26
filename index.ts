@@ -3,7 +3,7 @@ import http from "http";
 import cors from "cors";
 require("dotenv").config();
 const cms = require("./routes/cms");
-const { PORT = "8080" } = process.env;
+// const { PORT = "8080" } = process.env;
 const app = express();
 
 app.use(express.json(), cors(), cms);
@@ -17,6 +17,6 @@ app.get("*", (_, response: Response) => {
 });
 
 const server = http.createServer(app);
-server.listen(process.env.PORT || parseInt(PORT), () => {
-  console.log("Server listening to port :", PORT);
+server.listen(process.env.PORT || 8080, () => {
+  console.log("Server listening to port :", process.env.PORT);
 });
