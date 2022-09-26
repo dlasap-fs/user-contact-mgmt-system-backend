@@ -16,7 +16,10 @@ module.exports = {
             count: 0,
           };
     } catch (error: any) {
-      throw new Error(`ADD CMS ERROR, ${error}`);
+      return {
+        success: false,
+        message: error,
+      };
     }
   },
   getAllCMS: async (database: string, dataset: string) => {
@@ -24,7 +27,10 @@ module.exports = {
       const data = await operations.getRecords(database, dataset);
       return data;
     } catch (error: any) {
-      throw new Error(`GET ALL CMS ERROR, ${error}`);
+      return {
+        success: false,
+        message: error,
+      };
     }
   },
 };

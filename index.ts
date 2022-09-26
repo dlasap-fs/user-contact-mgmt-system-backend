@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json(), cors(), cms);
 app.get("/", (_, response: Response) => {
   console.log("Someone just visited the home page.");
-  response.send("Welcome to my BackEnd Application Using NodeJS w/ ExpressJS.");
+  response.send("Welcome to my BackEnd Application Using NodeJS w/ ExpressJS. PORT :", process.env.PORT);
 });
 
 app.get("*", (_, response: Response) => {
