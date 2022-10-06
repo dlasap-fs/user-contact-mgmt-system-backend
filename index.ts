@@ -13,6 +13,7 @@ app.get("/", (_, response: Response) => {
 });
 
 app.get("*", (_, response: Response) => {
+  console.log("Someone just accessed a non-existent page.");
   response.status(404).send("Page Not Found.");
 });
 
