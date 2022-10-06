@@ -25,8 +25,9 @@ export const operations = {
   },
   getRecords: async (database: string, dataset: string, options?: any) => {
     try {
+      const { limit = 5, start = 0 } = options ?? {};
       await client.connect();
-      const records = await client.db(database).collection(dataset).find().toArray();
+      const records = await client.db(database).collection(dataset).find().limit(limit).skip(start).toArray();
       return records.length ? records : [];
     } catch (error) {
       console.log("GET RECORDS ERROR:", error);
