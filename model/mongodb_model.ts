@@ -25,7 +25,7 @@ export const operations = {
   },
   getRecords: async (database: string, dataset: string, options?: any) => {
     try {
-      const { limit = 5, start = 0 } = options ?? {};
+      const { limit = 50, start = 0 } = options ?? {};
       await client.connect();
       const records = await client.db(database).collection(dataset).find().limit(limit).skip(start).toArray();
       return records.length ? records : [];
